@@ -17,29 +17,26 @@ git checkout -b $BRANCH
 git add .
 
 # Determina a mensagem de commit baseada no código de saída do monitor.py
-if [ "$MONITOR_EXIT_CODE" -eq 1 ]; then
-    git commit -m "alert: performance degradation detected
-    
-    Automated SRE monitoring detected service degradation.
-    Dashboard updated with latest observability metrics.
-    
-    Services monitored:
-    - GitHub Pages (https://pklavc.github.io/)
-    - GitHub API (api.github.com/repos/PkLavc/codepulse-monorepo)
-    
-    Incident response initiated.
-
-    Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
+if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
+    git commit -m "alert: performance degradation detected" -m "Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
 else
-    git commit -m "stats: update uptime metrics and dashboard data
-
-    Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
+    git commit -m "stats: update uptime dashboard metrics" -m "Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
 fi
+
+# Garante sincronização do branch antes do push
+git fetch origin
+git rebase origin/main
 
 git push origin $BRANCH --force
 
 # Criar e Mesclar PR com metadados profissionais
-PR_URL=$(gh pr create --title "📊 SRE Dashboard: $(date +'%Y-%m-%d %H:%M')" \
+if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
+    PR_TITLE="🔴 SRE Dashboard: Performance Degradation Detected - $(date +'%Y-%m-%d %H:%M')"
+else
+    PR_TITLE="🟢 SRE Dashboard: All Systems Operational - $(date +'%Y-%m-%d %H:%M')"
+fi
+
+PR_URL=$(gh pr create --title "$PR_TITLE" \
                       --body "Automated SRE observability dashboard update and metrics synchronization.
 
 **Changes:**
@@ -62,7 +59,7 @@ PR_URL=$(gh pr create --title "📊 SRE Dashboard: $(date +'%Y-%m-%d %H:%M')" \
 **Dashboard:** [index.html](./index.html)
 
 🚀 SRE Achievement: Automated observability update completed." \
-                      --base main --head $BRANCH)
+                      --base main --head $BRANCH --fill)
 
 echo "Merging PR: $PR_URL"
 gh pr merge "$PR_URL" --merge --delete-branch --admin
