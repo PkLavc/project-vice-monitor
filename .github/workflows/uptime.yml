@@ -1,0 +1,108 @@
+name: Uptime Monitor
+
+on:
+  schedule:
+    # Executa a cada 60 minutos
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  uptime-monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Necessário para git diff
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+        
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          
+      - name: Run uptime check
+        id: monitor
+        run: |
+          python monitor.py
+          echo "MONITOR_EXIT_CODE=$?" >> $GITHUB_ENV
+          
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --exit-code history.json index.html; then
+            echo "CHANGES=false" >> $GITHUB_OUTPUT
+          else
+            echo "CHANGES=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create branch and commit
+        if: steps.changes.outputs.CHANGES == 'true'
+        run: |
+          git config user.name "PkLavc"
+          git config user.email "patrickajm@gmail.com"
+          
+          BRANCH="uptime-dashboard-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH
+          
+          git add history.json index.html
+          
+          # Determina a mensagem de commit baseada nos resultados
+          if [ "$MONITOR_EXIT_CODE" -eq 1 ]; then
+            git commit -m "alert: service interruption detected
+            
+            Automated uptime check detected service interruption.
+            Dashboard updated with latest metrics.
+            
+            Services monitored:
+            - GitHub Pages (https://pklavc.github.io/)
+            - CodePulse Monorepo (https://pklavc.github.io/codepulse-monorepo/)"
+          else
+            git commit -m "stats: update uptime dashboard metrics
+            
+            Automated uptime check completed successfully.
+            Dashboard updated with latest metrics and visualizations.
+            
+            Services monitored:
+            - GitHub Pages (https://pklavc.github.io/)
+            - CodePulse Monorepo (https://pklavc.github.io/codepulse-monorepo/)"
+          fi
+          
+          git push origin $BRANCH --force
+          
+      - name: Create and merge PR
+        if: steps.changes.outputs.CHANGES == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="uptime-dashboard-$(date +%Y%m%d-%H%M%S)"
+          
+          echo "Creating PR..."
+          PR_URL=$(gh pr create --title "📊 Uptime Dashboard: $(date +'%Y-%m-%d %H:%M')" \
+                               --body "Automated uptime dashboard update and metrics synchronization.
+
+          **Changes:**
+          - Updated uptime metrics in history.json
+          - Refreshed dashboard visualizations in index.html
+          - Generated new statistical data for all services
+
+          **Services Monitored:**
+          - GitHub Pages (https://pklavc.github.io/)
+          - CodePulse Monorepo (https://pklavc.github.io/codepulse-monorepo/)
+
+          **Dashboard:** [index.html](./index.html)
+
+          📈 Pull Shark Achievement: Automated dashboard update completed." \
+                               --base main --head $BRANCH)
+          
+          echo "Merging PR: $PR_URL"
+          gh pr merge "$PR_URL" --merge --delete-branch --admin

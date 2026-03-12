@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptime Monitor Dashboard - PkLavc</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --card-bg: #252525;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-color: #00d4ff;
+            --success-color: #4ade80;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-color), #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .service-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.offline {
+            background-color: var(--danger-color);
+            box-shadow: 0 0 10px var(--danger-color);
+        }
+
+        .status-indicator.error {
+            background-color: var(--warning-color);
+            box-shadow: 0 0 10px var(--warning-color);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        .service-url {
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .chart-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .last-update {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        .badge.online { background-color: rgba(74, 222, 128, 0.2); color: var(--success-color); }
+        .badge.offline { background-color: rgba(239, 68, 68, 0.2); color: var(--danger-color); }
+        .badge.error { background-color: rgba(245, 158, 11, 0.2); color: var(--warning-color); }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Uptime Monitor Dashboard</h1>
+        <p>Monitoramento em tempo real de disponibilidade e performance</p>
+    </div>
+
+    <div class="container">
+        <!-- GitHub IO Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <div class="status-indicator" id="github-io-status"></div>
+                    <div>
+                        <h2>GitHub Pages</h2>
+                        <span class="service-url">https://pklavc.github.io/</span>
+                    </div>
+                </div>
+                <span class="badge" id="github-io-badge">Carregando...</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="github-io-uptime-month">--</div>
+                    <div class="metric-label">Uptime Mês Atual</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="github-io-uptime-24h">--</div>
+                    <div class="metric-label">Uptime 24h</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="github-io-latency">--</div>
+                    <div class="metric-label">Latência Média</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">Resumo Mensal</div>
+                    <div class="chart-container">
+                        <canvas id="github-io-monthly-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">Resumo do Mês Atual</div>
+                    <div class="chart-container">
+                        <canvas id="github-io-current-month-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">Resumo do Dia</div>
+                    <div class="chart-container">
+                        <canvas id="github-io-daily-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CodePulse Service -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">
+                    <div class="status-indicator" id="codepulse-status"></div>
+                    <div>
+                        <h2>CodePulse Monorepo</h2>
+                        <span class="service-url">https://pklavc.github.io/codepulse-monorepo/</span>
+                    </div>
+                </div>
+                <span class="badge" id="codepulse-badge">Carregando...</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="codepulse-uptime-month">--</div>
+                    <div class="metric-label">Uptime Mês Atual</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="codepulse-uptime-24h">--</div>
+                    <div class="metric-label">Uptime 24h</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="codepulse-latency">--</div>
+                    <div class="metric-label">Latência Média</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">Resumo Mensal</div>
+                    <div class="chart-container">
+                        <canvas id="codepulse-monthly-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">Resumo do Mês Atual</div>
+                    <div class="chart-container">
+                        <canvas id="codepulse-current-month-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">Resumo do Dia</div>
+                    <div class="chart-container">
+                        <canvas id="codepulse-daily-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🚀 Sistema automatizado de monitoramento com CI/CD integrado</p>
+            <div class="last-update" id="last-update">Última atualização: Carregando...</div>
+        </div>
+    </div>
+
+    <!-- INICIO_DADOS_INJECAO -->
+    <!-- Os dados serão injetados aqui pelo Python -->
+    <!-- FIM_DADOS_INJECAO -->
+
+    <script>
+        // INICIO_LOGICA_DASHBOARD
+        // Esta seção será preenchida pelo Python com os dados processados
+        
+        let dashboardData = {
+            github_io: {
+                current_status: 'ONLINE',
+                uptime_monthly: 0,
+                uptime_current_month: 0,
+                uptime_24h: 0,
+                avg_latency: 0,
+                last_check: ''
+            },
+            codepulse: {
+                current_status: 'ONLINE',
+                uptime_monthly: 0,
+                uptime_current_month: 0,
+                uptime_24h: 0,
+                avg_latency: 0,
+                last_check: ''
+            },
+            history: []
+        };
+
+        // Função para atualizar indicadores de status
+        function updateStatusIndicators() {
+            // GitHub IO
+            const githubStatusEl = document.getElementById('github-io-status');
+            const githubBadgeEl = document.getElementById('github-io-badge');
+            
+            if (dashboardData.github_io.current_status === 'ONLINE') {
+                githubStatusEl.className = 'status-indicator';
+                githubBadgeEl.className = 'badge online';
+                githubBadgeEl.textContent = 'ONLINE';
+            } else if (dashboardData.github_io.current_status === 'OFFLINE') {
+                githubStatusEl.className = 'status-indicator offline';
+                githubBadgeEl.className = 'badge offline';
+                githubBadgeEl.textContent = 'OFFLINE';
+            } else {
+                githubStatusEl.className = 'status-indicator error';
+                githubBadgeEl.className = 'badge error';
+                githubBadgeEl.textContent = 'ERROR';
+            }
+
+            // CodePulse
+            const codepulseStatusEl = document.getElementById('codepulse-status');
+            const codepulseBadgeEl = document.getElementById('codepulse-badge');
+            
+            if (dashboardData.codepulse.current_status === 'ONLINE') {
+                codepulseStatusEl.className = 'status-indicator';
+                codepulseBadgeEl.className = 'badge online';
+                codepulseBadgeEl.textContent = 'ONLINE';
+            } else if (dashboardData.codepulse.current_status === 'OFFLINE') {
+                codepulseStatusEl.className = 'status-indicator offline';
+                codepulseBadgeEl.className = 'badge offline';
+                codepulseBadgeEl.textContent = 'OFFLINE';
+            } else {
+                codepulseStatusEl.className = 'status-indicator error';
+                codepulseBadgeEl.className = 'badge error';
+                codepulseBadgeEl.textContent = 'ERROR';
+            }
+        }
+
+        // Função para atualizar métricas numéricas
+        function updateMetrics() {
+            // GitHub IO
+            document.getElementById('github-io-uptime-month').textContent = 
+                dashboardData.github_io.uptime_current_month.toFixed(2) + '%';
+            document.getElementById('github-io-uptime-24h').textContent = 
+                dashboardData.github_io.uptime_24h.toFixed(2) + '%';
+            document.getElementById('github-io-latency').textContent = 
+                dashboardData.github_io.avg_latency.toFixed(0) + 'ms';
+
+            // CodePulse
+            document.getElementById('codepulse-uptime-month').textContent = 
+                dashboardData.codepulse.uptime_current_month.toFixed(2) + '%';
+            document.getElementById('codepulse-uptime-24h').textContent = 
+                dashboardData.codepulse.uptime_24h.toFixed(2) + '%';
+            document.getElementById('codepulse-latency').textContent = 
+                dashboardData.codepulse.avg_latency.toFixed(0) + 'ms';
+
+            // Última atualização
+            document.getElementById('last-update').textContent = 
+                'Última atualização: ' + dashboardData.github_io.last_check;
+        }
+
+        // Função para criar gráficos de donut
+        function createDonutChart(ctx, uptime, downtime, title) {
+            return new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Online', 'Offline'],
+                    datasets: [{
+                        data: [uptime, downtime],
+                        backgroundColor: [
+                            'rgba(74, 222, 128, 0.8)',
+                            'rgba(239, 68, 68, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(74, 222, 128, 1)',
+                            'rgba(239, 68, 68, 1)'
+                        ],
+                        borderWidth: 2,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#b0b0b0',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#333',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#555',
+                            borderWidth: 1
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        }
+
+        // Função para renderizar todos os gráficos
+        function renderCharts() {
+            // GitHub IO Charts
+            const githubMonthlyCtx = document.getElementById('github-io-monthly-chart').getContext('2d');
+            createDonutChart(
+                githubMonthlyCtx, 
+                dashboardData.github_io.uptime_monthly, 
+                100 - dashboardData.github_io.uptime_monthly,
+                'Resumo Mensal'
+            );
+
+            const githubCurrentMonthCtx = document.getElementById('github-io-current-month-chart').getContext('2d');
+            createDonutChart(
+                githubCurrentMonthCtx, 
+                dashboardData.github_io.uptime_current_month, 
+                100 - dashboardData.github_io.uptime_current_month,
+                'Resumo Mês Atual'
+            );
+
+            const githubDailyCtx = document.getElementById('github-io-daily-chart').getContext('2d');
+            createDonutChart(
+                githubDailyCtx, 
+                dashboardData.github_io.uptime_24h, 
+                100 - dashboardData.github_io.uptime_24h,
+                'Resumo 24h'
+            );
+
+            // CodePulse Charts
+            const codepulseMonthlyCtx = document.getElementById('codepulse-monthly-chart').getContext('2d');
+            createDonutChart(
+                codepulseMonthlyCtx, 
+                dashboardData.codepulse.uptime_monthly, 
+                100 - dashboardData.codepulse.uptime_monthly,
+                'Resumo Mensal'
+            );
+
+            const codepulseCurrentMonthCtx = document.getElementById('codepulse-current-month-chart').getContext('2d');
+            createDonutChart(
+                codepulseCurrentMonthCtx, 
+                dashboardData.codepulse.uptime_current_month, 
+                100 - dashboardData.codepulse.uptime_current_month,
+                'Resumo Mês Atual'
+            );
+
+            const codepulseDailyCtx = document.getElementById('codepulse-daily-chart').getContext('2d');
+            createDonutChart(
+                codepulseDailyCtx, 
+                dashboardData.codepulse.uptime_24h, 
+                100 - dashboardData.codepulse.uptime_24h,
+                'Resumo 24h'
+            );
+        }
+
+        // Função de inicialização
+        function initDashboard() {
+            updateStatusIndicators();
+            updateMetrics();
+            renderCharts();
+        }
+
+        // Inicializa quando a página carrega
+        document.addEventListener('DOMContentLoaded', initDashboard);
+        
+        // Atualiza a cada 60 segundos
+        setInterval(initDashboard, 60000);
+        // FIM_LOGICA_DASHBOARD
+    </script>
+</body>
+</html>
