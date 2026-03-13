@@ -219,11 +219,19 @@ def cleanup_old_records(history):
     """Remove registros com mais de 90 dias para manter o repositório leve"""
     cutoff_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CLEANUP_DAYS)
     
+    def parse_timestamp(ts_str):
+        """Parse timestamp string, handling both naive and aware datetimes"""
+        dt = datetime.datetime.fromisoformat(ts_str)
+        if dt.tzinfo is None:
+            # Se for naive, assume UTC
+            dt = dt.replace(tzinfo=datetime.timezone.utc)
+        return dt
+    
     for service_key in history["services"]:
         original_count = len(history["services"][service_key])
         history["services"][service_key] = [
             record for record in history["services"][service_key]
-            if datetime.datetime.fromisoformat(record["timestamp"]) >= cutoff_date
+            if parse_timestamp(record["timestamp"]) >= cutoff_date
         ]
         removed_count = original_count - len(history["services"][service_key])
         if removed_count > 0:
@@ -236,7 +244,7 @@ def calculate_uptime_percentage(records, time_filter=None):
     
     # Filtra registros se necessário
     if time_filter:
-        filtered_records = [r for r in records if datetime.datetime.fromisoformat(r["timestamp"]) >= time_filter]
+        filtered_records = [r for r in records if parse_timestamp(r["timestamp"]) >= time_filter]
     else:
         filtered_records = records
     
@@ -261,7 +269,7 @@ def calculate_performance_metrics(records, time_filter=None):
     
     # Filtra registros se necessário
     if time_filter:
-        filtered_records = [r for r in records if datetime.datetime.fromisoformat(r["timestamp"]) >= time_filter]
+        filtered_records = [r for r in records if parse_timestamp(r["timestamp"]) >= time_filter]
     else:
         filtered_records = records
     
@@ -286,7 +294,7 @@ def calculate_performance_metrics(records, time_filter=None):
     
     # Horário de pico (maior latência)
     peak_record = max(online_records, key=lambda x: x["total_time_ms"])
-    peak_hour = datetime.datetime.fromisoformat(peak_record["timestamp"]).strftime("%H:%M")
+    peak_hour = parse_timestamp(peak_record["timestamp"]).strftime("%H:%M")
     
     return {
         "avg_latency": round(sum(latencies) / len(latencies), 2),
@@ -393,8 +401,8 @@ def generate_incident_log(history):
             elif status == "ONLINE" and current_incident is not None:
                 # Fim de incidente
                 current_incident["end_time"] = timestamp
-                start_dt = datetime.datetime.fromisoformat(current_incident["start_time"])
-                end_dt = datetime.datetime.fromisoformat(current_incident["end_time"])
+                start_dt = parse_timestamp(current_incident["start_time"])
+                end_dt = parse_timestamp(current_incident["end_time"])
                 duration = end_dt - start_dt
                 current_incident["duration"] = str(duration).split('.')[0]  # Remove milissegundos
                 incidents.append(current_incident)
