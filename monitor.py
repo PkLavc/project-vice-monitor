@@ -215,17 +215,17 @@ def add_record_to_history(history, service_key, record):
     
     save_history(history)
 
+def parse_timestamp(ts_str):
+    """Parse timestamp string, handling both naive and aware datetimes"""
+    dt = datetime.datetime.fromisoformat(ts_str)
+    if dt.tzinfo is None:
+        # Se for naive, assume UTC
+        dt = dt.replace(tzinfo=datetime.timezone.utc)
+    return dt
+
 def cleanup_old_records(history):
     """Remove registros com mais de 90 dias para manter o repositório leve"""
     cutoff_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CLEANUP_DAYS)
-    
-    def parse_timestamp(ts_str):
-        """Parse timestamp string, handling both naive and aware datetimes"""
-        dt = datetime.datetime.fromisoformat(ts_str)
-        if dt.tzinfo is None:
-            # Se for naive, assume UTC
-            dt = dt.replace(tzinfo=datetime.timezone.utc)
-        return dt
     
     for service_key in history["services"]:
         original_count = len(history["services"][service_key])
