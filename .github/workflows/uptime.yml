@@ -2,7 +2,7 @@ name: Uptime Monitor
 
 on:
   schedule:
-    # Executa a cada 60 minutos
+    # Runs every 60 minutes
     - cron: "0 * * * *"
   workflow_dispatch:
 
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Necessário para git diff
+          fetch-depth: 0  # Required for git diff
         
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -56,14 +56,14 @@ jobs:
           
           git add .
           
-          # Determina a mensagem de commit baseada nos resultados
+          # Choose commit message based on results
           if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
             git commit -m "alert: performance degradation detected" -m "Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
           else
             git commit -m "stats: update uptime dashboard metrics" -m "Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
           fi
           
-          # Garante sincronização do branch antes do push
+          # Ensure branch is up to date before pushing
           git fetch origin
           git rebase origin/main
           
@@ -78,7 +78,7 @@ jobs:
           
           echo "Creating PR..."
           
-          # Determina o título do PR baseado no status
+          # Determine the PR title based on status
           if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
             PR_TITLE="🔴 SRE Dashboard: Performance Degradation Detected - $(date +'%Y-%m-%d %H:%M')"
           else

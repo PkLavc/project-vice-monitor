@@ -1,16 +1,16 @@
 #!/bin/bash
-set -e # Para o script se qualquer comando falhar
+set -e # Exit on any error
 
-# Sleep aleatório entre 1 e 300 segundos para variabilidade
+# Random sleep between 1 and 300 seconds to avoid collisions
 sleep $((RANDOM % 300 + 1))
 
-# Identidade 
+# Set git user identity
 git config user.name "PkLavc"
 git config user.email "patrickajm@gmail.com"
 
-# Verifica se houve mudança real antes de criar PR
+# Skip if there are no real changes to commit
 if git diff --exit-code history.json index.html uptime-badge.json assets/; then
-    echo "Nenhuma mudança detectada. Pulando merge."
+    echo "No changes detected. Skipping merge."
     exit 0
 fi
 
@@ -19,7 +19,7 @@ git checkout -b $BRANCH
 
 git add .
 
-# Mensagens de commit variadas
+# Commit message options (randomized)
 MESSAGES=(
     "metrics: update dashboard"
     "stats: sync uptime data"
@@ -34,7 +34,7 @@ ALERT_MESSAGES=(
     "alert: service disruption detected"
 )
 
-# Determina a mensagem de commit baseada no código de saída do monitor.py
+# Choose commit message based on monitor.py exit code
 if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
     RANDOM_INDEX=$((RANDOM % ${#ALERT_MESSAGES[@]}))
     COMMIT_MSG="${ALERT_MESSAGES[$RANDOM_INDEX]}"
@@ -45,13 +45,13 @@ fi
 
 git commit -m "$COMMIT_MSG" -m "Co-authored-by: pklavc-labs <modderkcaheua@gmail.com>"
 
-# Garante sincronização do branch antes do push
+# Ensure the branch is up to date before pushing
 git fetch origin
 git rebase origin/main
 
 git push origin $BRANCH --force
 
-# Criar e Mesclar PR com metadados profissionais
+# Create and merge PR with professional metadata
 if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
     PR_TITLE="🔴 SRE Dashboard: Performance Degradation Detected - $(date +'%Y-%m-%d %H:%M')"
 else
