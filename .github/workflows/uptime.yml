@@ -58,9 +58,9 @@ jobs:
           
           # Choose commit message based on results
           if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
-            git commit -m "alert: performance degradation detected" -m "Co-authored-by: arthurperico <arthurperico1212@gmail.com>"
+            git commit -m "alert: performance degradation detected" -m "Co-authored-by: BabaYaga-RU <p201952589703@gmail.com>"
           else
-            git commit -m "stats: update uptime dashboard metrics" -m "Co-authored-by: arthurperico <arthurperico1212@gmail.com>"
+            git commit -m "stats: update uptime dashboard metrics" -m "Co-authored-by: BabaYaga-RU <p201952589703@gmail.com>"
           fi
           
           # Ensure branch is up to date before pushing
