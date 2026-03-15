@@ -182,12 +182,12 @@ def check_service(service_key, service_config):
             record["num_images"] = len(re.findall(r'<img\b', html, re.I))
             record["num_links"] = len(re.findall(r'<a\b', html, re.I))
             record["num_scripts"] = len(re.findall(r'<script\b', html, re.I))
-            record["num_stylesheets"] = len(re.findall(r'<link[^>]+rel=["\\'"]stylesheet["\\'"]', html, re.I))
+            record["num_stylesheets"] = len(re.findall(r"<link[^>]+rel=['\"]stylesheet['\"]", html, re.I))
 
             title_match = re.search(r'<title>(.*?)</title>', html, re.I | re.S)
             record["page_title"] = title_match.group(1).strip() if title_match else None
 
-            meta_desc = re.search(r'<meta\s+name=["\\'"]description["\\'"]\s+content=["\\'"](.*?)["\\'"]', html, re.I)
+            meta_desc = re.search(r"<meta\s+name=['\"]description['\"]\s+content=['\"](.*?)['\"]", html, re.I)
             record["meta_description"] = meta_desc.group(1).strip() if meta_desc else None
 
         # Security analysis
