@@ -22,21 +22,21 @@ SERVICES = {
         "security_headers": ["strict-transport-security", "x-content-type-options"]
     },
     "rockstar_newswire": {
-        "url": "https://www.rockstargames.com/br/newswire",
+        "url": "https://www.rockstargames.com/newswire",
         "name": "Rockstar Newswire",
         "type": "website",
         "keywords": ["Rockstar", "News", "GTA"],
         "security_headers": ["strict-transport-security", "x-content-type-options"]
     },
     "playstation_store": {
-        "url": "https://www.playstation.com/pt-br/games/grand-theft-auto-vi/",
+        "url": "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
         "name": "PlayStation Store - GTA VI",
         "type": "website",
         "keywords": ["Grand Theft Auto", "GTA VI", "PlayStation"],
         "security_headers": ["strict-transport-security", "x-content-type-options"]
     },
     "xbox_store": {
-        "url": "https://www.xbox.com/pt-PT/games/store/grand-theft-auto-vi/9NL3WWNZLZZN",
+        "url": "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9NL3WWNZLZZN",
         "name": "Xbox Store - GTA VI",
         "type": "website",
         "keywords": ["Grand Theft Auto", "GTA VI", "Xbox"],
@@ -593,12 +593,14 @@ def generate_incident_log(history):
 
 def generate_shields_badge(history):
     """Generate a Shields.io badge"""
-    github_records = history["services"]["github_pages"]
-    if not github_records:
+    # Use the first service as reference for uptime calculation
+    first_service_key = list(SERVICES.keys())[0]
+    service_records = history["services"][first_service_key]
+    if not service_records:
         uptime = 0
     else:
         time_filters = get_time_filters()
-        uptime = calculate_uptime_percentage(github_records, time_filters["last_24h"])
+        uptime = calculate_uptime_percentage(service_records, time_filters["last_24h"])
     
     badge_data = {
         "schemaVersion": 1,
@@ -714,7 +716,7 @@ def main():
             })
 
         perf = calculate_performance_metrics(records, time_filters["last_24h"])
-        summary["avg_latency_last_24h"][service_key] = int(perf.get("avg_latency", 0)) if perf.get("avg_latency", 0) else 0
+        summary["avg_latency_last_24h"][service_key] = int(perf.get("avg_latency", 0)) if perf and perf.get("avg_latency", 0) else 0
 
     # Inject data into HTML
     print("Updating observability dashboard...")
