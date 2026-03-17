@@ -150,6 +150,9 @@ def calculate_content_hash(content):
 
 def detect_intelligence_update(history, service_key, new_hash):
     """Detect if content hash changed - indicates Intelligence Update"""
+    if not history or "services" not in history:
+        return False, None
+    
     records = history["services"].get(service_key, [])
     
     if not records:
@@ -671,26 +674,59 @@ def main():
     print("Starting advanced SRE monitoring...")
     start_time = datetime.datetime.now(datetime.timezone.utc)
 
-    # Load history
-    history = load_history()
+    try:
+        # Load history
+        history = load_history()
+        print(f"Loaded history with {len(history.get('services', {}))} services")
+    except Exception as e:
+        print(f"ERROR: Failed to load history: {e}")
+        sys.exit(1)
 
     # Monitora cada serviço
     service_results = {}
     for service_key, service_config in SERVICES.items():
         print(f"Monitorando {service_config['name']}...")
-        record = check_service(service_key, service_config)
-        add_record_to_history(history, service_key, record)
-        service_results[service_key] = record
+        try:
+            record = check_service(service_key, service_config)
+            add_record_to_history(history, service_key, record)
+            service_results[service_key] = record
 
-        status_symbol = "+" if record["status"] == "ONLINE" else "-"
-        latency_str = f"{record.get('total_time_ms', 0)}ms" if record["status"] == "ONLINE" else "N/A"
-        print(f"  {status_symbol} {service_config['name']}: {record['status']} - {latency_str}")
+            status_symbol = "+" if record["status"] == "ONLINE" else "-"
+            latency_str = f"{record.get('total_time_ms', 0)}ms" if record["status"] == "ONLINE" else "N/A"
+            print(f"  {status_symbol} {service_config['name']}: {record['status']} - {latency_str}")
+        except Exception as e:
+            print(f"ERROR: Failed to monitor {service_config['name']}: {e}")
+            # Create error record
+            error_record = {
+                "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "url": service_config["url"],
+                "status": "ERROR",
+                "http_code": 0,
+                "total_time_ms": 0,
+                "dns_time_ms": 0,
+                "tcp_time_ms": 0,
+                "transfer_time_ms": 0,
+                "content_ok": False,
+                "found_keywords": [],
+                "security_headers": {},
+                "error": str(e),
+                "engagement": {}
+            }
+            add_record_to_history(history, service_key, error_record)
+            service_results[service_key] = error_record
     
     # Cleanup old records
     print("Performing old record cleanup...")
-    cleanup_old_records(history)
+    try:
+        cleanup_old_records(history)
+    except Exception as e:
+        print(f"WARNING: Cleanup failed: {e}")
     
-    save_history(history)
+    try:
+        save_history(history)
+    except Exception as e:
+        print(f"ERROR: Failed to save history: {e}")
+        sys.exit(1)
 
     # Build a summary object for the dashboard
     time_filters = get_time_filters()
@@ -702,35 +738,48 @@ def main():
     }
 
     for service_key in SERVICES.keys():
-        records = history["services"][service_key]
-        last_24h = [r for r in records if parse_timestamp(r["timestamp"]) >= time_filters["last_24h"]]
-        summary["incidents_last_24h"][service_key] = len([r for r in last_24h if r.get("status") not in ["ONLINE", "INTELLIGENCE_UPDATE"]])
-        
-        # Track intelligence updates
-        intelligence_updates = [r for r in last_24h if r.get("intelligence_update", False)]
-        if intelligence_updates:
-            summary["intelligence_updates"].append({
-                "service": service_key,
-                "count": len(intelligence_updates),
-                "latest": intelligence_updates[-1]["timestamp"]
-            })
+        try:
+            records = history["services"][service_key]
+            last_24h = [r for r in records if parse_timestamp(r["timestamp"]) >= time_filters["last_24h"]]
+            summary["incidents_last_24h"][service_key] = len([r for r in last_24h if r.get("status") not in ["ONLINE", "INTELLIGENCE_UPDATE"]])
+            
+            # Track intelligence updates
+            intelligence_updates = [r for r in last_24h if r.get("intelligence_update", False)]
+            if intelligence_updates:
+                summary["intelligence_updates"].append({
+                    "service": service_key,
+                    "count": len(intelligence_updates),
+                    "latest": intelligence_updates[-1]["timestamp"]
+                })
 
-        perf = calculate_performance_metrics(records, time_filters["last_24h"])
-        summary["avg_latency_last_24h"][service_key] = int(perf.get("avg_latency", 0)) if perf and perf.get("avg_latency", 0) else 0
+            perf = calculate_performance_metrics(records, time_filters["last_24h"])
+            summary["avg_latency_last_24h"][service_key] = int(perf.get("avg_latency", 0)) if perf and perf.get("avg_latency", 0) else 0
+        except Exception as e:
+            print(f"WARNING: Failed to process data for {service_key}: {e}")
+            summary["incidents_last_24h"][service_key] = 0
+            summary["avg_latency_last_24h"][service_key] = 0
 
     # Inject data into HTML
     print("Updating observability dashboard...")
-    if inject_data_into_html(history, summary):
-        print("Dashboard updated successfully!")
-    else:
-        print("Failed to update dashboard")
+    try:
+        if inject_data_into_html(history, summary):
+            print("Dashboard updated successfully!")
+        else:
+            print("Failed to update dashboard")
+            sys.exit(1)
+    except Exception as e:
+        print(f"ERROR: Failed to inject data into HTML: {e}")
         sys.exit(1)
     
     # Check if alert is needed
-    if should_alert_services(history) or summary.get("intelligence_updates", []):
-        print("ALERT: Incident or Intelligence Update detected!")
-    else:
-        print("Monitoring completed successfully - all services online")
+    try:
+        if should_alert_services(history) or summary.get("intelligence_updates", []):
+            print("ALERT: Incident or Intelligence Update detected!")
+        else:
+            print("Monitoring completed successfully - all services online")
+    except Exception as e:
+        print(f"WARNING: Failed to check alerts: {e}")
+        print("Monitoring completed - check logs for details")
     
     sys.exit(0)
 
