@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Vice Monitor - Demo Estática</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #111827;
+            --panel-bg: #0b1220;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            --accent-color: #38bdf8;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-color: #1f2937;
+            --grid-line: #334155;
+            --hover-bg: #1f2937;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-color), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .demo-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .status-online { background: rgba(34, 197, 94, 0.2); color: var(--success-color); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .status-offline { background: rgba(239, 68, 68, 0.2); color: var(--danger-color); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .status-warning { background: rgba(245, 158, 11, 0.2); color: var(--warning-color); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        .demo-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--panel-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--hover-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), #a78bfa);
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .code-block {
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            overflow-x: auto;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Project Vice Monitor</h1>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+            Sistema de Monitoramento Estático - Sem necessidade de servidor
+        </p>
+
+        <div class="demo-section">
+            <h2>🎯 Sistema Completo</h2>
+            <p>Este é um sistema de monitoramento totalmente estático que funciona sem necessidade de servidor web.</p>
+            
+            <div class="demo-item">
+                <span class="status-badge status-online">SISTEMA PRONTO</span>
+                <h3>Funcionalidades Principais</h3>
+                <ul class="feature-list">
+                    <li>Monitoramento em tempo real de 4 serviços GTA VI</li>
+                    <li>Detecção automática de mudanças de conteúdo (Intelligence Update)</li>
+                    <li>Geração automática de blog entries para atualizações</li>
+                    <li>Dashboard HTML totalmente estático</li>
+                    <li>Blog com links diretos (sem carregamento via JavaScript)</li>
+                    <li>Gráficos de performance e SLA</li>
+                    <li>Histórico de incidentes</li>
+                    <li>Sistema de badges e estatísticas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Como Funciona</h2>
+            
+            <div class="demo-item">
+                <h3>1. Monitoramento (monitor_new.py)</h3>
+                <p>Executa verificações automáticas dos serviços e gera dados HTML:</p>
+                <div class="code-block">
+python monitor_new.py
+                </div>
+                <p><strong>Resultado:</strong> Atualiza index.html e blog.html automaticamente</p>
+            </div>
+
+            <div class="demo-item">
+                <h3>2. Dashboard Estático (index.html)</h3>
+                <p>Arquivo HTML completo que pode ser aberto diretamente no navegador:</p>
+                <div class="code-block">
+<!-- Basta abrir index.html no navegador -->
+<!-- Não precisa de servidor web -->
+                </div>
+                <p><strong>Funcionalidades:</strong> Dados integrados, gráficos, estatísticas</p>
+            </div>
+
+            <div class="demo-item">
+                <h3>3. Blog de Inteligência (blog.html)</h3>
+                <p>Blog com links diretos para relatórios de inteligência:</p>
+                <div class="code-block">
+<!-- Links HTML puros, sem JavaScript -->
+<!-- Mais recente aparece primeiro -->
+                </div>
+                <p><strong>Funcionalidades:</strong> Relatórios automáticos, links diretos</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📁 Estrutura de Arquivos</h2>
+            
+            <div class="demo-item">
+                <h3>Arquivos Principais</h3>
+                <div class="code-block">
+project-vice-monitor/
+├── monitor_new.py          # Sistema de monitoramento
+├── index.html             # Dashboard principal (estático)
+├── blog.html              # Blog de inteligência (estático)
+├── assets/
+│   ├── style.css          # Estilos CSS
+│   └── script.js          # Funcionalidades JavaScript
+├── blog/                  # Entradas de blog geradas
+├── data/                  # Dados de histórico
+└── README.md              # Documentação
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎮 Demonstração</h2>
+            
+            <div class="demo-item">
+                <span class="status-badge status-warning">SERVIÇOS MONITORADOS</span>
+                <h3>Serviços em Tempo Real</h3>
+                <ul class="feature-list">
+                    <li>GTA VI Official (Rockstar Games)</li>
+                    <li>Rockstar Newswire</li>
+                    <li>PlayStation Store - GTA VI</li>
+                    <li>Xbox Store - GTA VI</li>
+                </ul>
+            </div>
+
+            <div class="demo-item">
+                <span class="status-badge status-online">INTELIGENCIA ATIVA</span>
+                <h3>Detecção de Inteligência</h3>
+                <p>O sistema detecta automaticamente mudanças de conteúdo e gera relatórios:</p>
+                <ul class="feature-list">
+                    <li>Hash de conteúdo monitorado</li>
+                    <li>Alertas automáticos para mudanças</li>
+                    <li>Geração de blog entries</li>
+                    <li>Atualização do blog.html</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>⚡ Vantagens do Sistema Estático</h2>
+            
+            <div class="demo-item">
+                <ul class="feature-list">
+                    <li><strong>Sem dependências de servidor:</strong> Funciona em qualquer navegador</li>
+                    <li><strong>Carregamento instantâneo:</strong> Sem latência de rede</li>
+                    <li><strong>Portabilidade:</strong> Pode ser hospedado em GitHub Pages, Netlify, etc.</li>
+                    <li><strong>Segurança:</strong> Sem vulnerabilidades de servidor</li>
+                    <li><strong>Custo zero:</strong> Hospedagem estática gratuita</li>
+                    <li><strong>Performance:</strong> Resposta imediata</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-actions">
+            <a href="index.html" class="btn btn-primary">Ver Dashboard →</a>
+            <a href="blog.html" class="btn">Ver Blog de Inteligência →</a>
+            <button onclick="runDemo()" class="btn">Executar Demonstração</button>
+            <button onclick="showArchitecture()" class="btn">Mostrar Arquitetura</button>
+        </div>
+
+        <div id="demo-output" style="margin-top: 2rem; display: none;">
+            <div class="demo-item">
+                <h3>🔧 Simulação de Monitoramento</h3>
+                <div class="code-block" id="demo-console">
+Iniciando monitoramento...
+✓ GTA VI Official: ONLINE (759ms)
+✓ Rockstar Newswire: ONLINE (628ms)
+✓ PlayStation Store: ONLINE (900ms)
+✓ Xbox Store: ONLINE (995ms)
+📊 Dashboard atualizado com sucesso!
+📝 Blog entries gerados automaticamente!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runDemo() {
+            const output = document.getElementById('demo-output');
+            const console = document.getElementById('demo-console');
+            
+            output.style.display = 'block';
+            
+            // Simula a execução do monitoramento
+            const messages = [
+                'Iniciando monitoramento...',
+                '✓ GTA VI Official: ONLINE (759ms)',
+                '✓ Rockstar Newswire: ONLINE (628ms)',
+                '✓ PlayStation Store: ONLINE (900ms)',
+                '✓ Xbox Store: ONLINE (995ms)',
+                '📊 Dashboard atualizado com sucesso!',
+                '📝 Blog entries gerados automaticamente!'
+            ];
+            
+            console.textContent = '';
+            let i = 0;
+            
+            const interval = setInterval(() => {
+                if (i < messages.length) {
+                    console.textContent += messages[i] + '\n';
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 500);
+        }
+
+        function showArchitecture() {
+            alert('🏗️ Arquitetura do Sistema:\n\n1. monitor_new.py - Monitora serviços e gera HTML\n2. index.html - Dashboard estático com dados integrados\n3. blog.html - Blog com links diretos\n4. assets/ - Estilos e scripts\n5. blog/ - Entradas de blog geradas\n6. data/ - Histórico de monitoramento\n\n✅ Sistema totalmente estático - sem necessidade de servidor!');
+        }
+    </script>
+</body>
+</html>
