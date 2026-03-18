@@ -380,12 +380,26 @@
         // Load and display intelligence updates from history.json
         async function loadIntelligenceUpdates() {
             try {
-                const response = await fetch('history.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                let history;
                 
-                const history = await response.json();
+                // Try multiple approaches to load the data
+                try {
+                    // Approach 1: Direct fetch
+                    const response = await fetch('history.json');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    history = await response.json();
+                } catch (fetchError) {
+                    console.warn('Fetch failed, trying alternative approach:', fetchError);
+                    
+                    // Approach 2: Try with cache busting
+                    const response = await fetch('history.json?' + Date.now());
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    history = await response.json();
+                }
                 const blogPostsContainer = document.getElementById('blog-posts');
                 const intelligenceUpdates = [];
                 
