@@ -59,9 +59,9 @@ jobs:
           git add .
           
           if [ "${MONITOR_EXIT_CODE:-0}" -eq 1 ]; then
-            git commit -m "alert: performance degradation detected" -m "Co-authored-by: lojadosapo <processos@lojadosapo.com.br>"
+            git commit -m "alert: performance degradation detected"
           else
-            git commit -m "stats: update uptime dashboard metrics" -m "Co-authored-by: lojadosapo <processos@lojadosapo.com.br>"
+            git commit -m "stats: update uptime dashboard metrics"
           fi
           
           git fetch origin
