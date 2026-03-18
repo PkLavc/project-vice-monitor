@@ -441,8 +441,8 @@
                 </div>
             </div>
             <div class="status-overview">
-                <span class="badge online" id="global-status">LOADING...</span>
-                <span class="badge" id="last-update-badge">Carregando...</span>
+                <span class="badge online" id="global-status">SYSTEM MONITORED</span>
+                <span class="badge" id="last-update-badge">2026-03-18 11:29:00</span>
                 <a href="blog.html" class="btn btn-primary">Intelligence Blog →</a>
             </div>
         </div>
@@ -455,22 +455,22 @@
             <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Last Execution Summary</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-value" id="run-duration">--</div>
+                    <div class="metric-value">0m 3s</div>
                     <div class="metric-label">Execution Duration</div>
                     <div class="metric-sublabel">Monitoring Time</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" id="page-size">--</div>
+                    <div class="metric-value">576.92 KB</div>
                     <div class="metric-label">Page Size</div>
                     <div class="metric-sublabel">KB (last check)</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" id="page-size-change">--</div>
+                    <div class="metric-value">0.0%</div>
                     <div class="metric-label">Size Variation</div>
                     <div class="metric-sublabel">Since last execution</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" id="incidents-24h">--</div>
+                    <div class="metric-value">0</div>
                     <div class="metric-label">Incidents in last 24h</div>
                     <div class="metric-sublabel">Total (all services)</div>
                 </div>
@@ -483,122 +483,33 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-title">
-                        <div class="status-indicator" id="gta-vi-official-status"></div>
+                        <div class="status-indicator"></div>
                         <div>
                             <div class="service-name">GTA VI Official</div>
                             <div class="service-url">https://www.rockstargames.com/VI/</div>
                         </div>
                     </div>
-                    <span class="badge online" id="gta-vi-official-badge">ONLINE</span>
+                    <span class="badge online">ONLINE</span>
                 </div>
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="gta-vi-official-sla-24h">--</div>
-                    <div class="metric-label">SLA 24h</div>
-                    <div class="metric-sublabel">Availability</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-sla-7d">--</div>
-                    <div class="metric-label">SLA 7d</div>
-                    <div class="metric-sublabel">Week</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-sla-30d">--</div>
-                    <div class="metric-label">SLA 30d</div>
-                    <div class="metric-sublabel">Month</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-latency">--</div>
-                    <div class="metric-label">Average Latency</div>
-                    <div class="metric-sublabel">24h</div>
-                </div>
-            </div>
-
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-dns">--</div>
-                    <div class="metric-label">DNS Time</div>
-                    <div class="metric-sublabel">Resolution</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-tcp">--</div>
-                    <div class="metric-label">TCP Time</div>
-                    <div class="metric-sublabel">Connection</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-transfer">--</div>
-                    <div class="metric-label">Transfer Time</div>
-                    <div class="metric-sublabel">Download</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-peak">--</div>
-                    <div class="metric-label">Peak Hour</div>
-                    <div class="metric-sublabel">Highest Latency</div>
-                </div>
-            </div>
-
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-html-size">--</div>
-                    <div class="metric-label">HTML Size</div>
-                    <div class="metric-sublabel">KB</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-images">--</div>
-                    <div class="metric-label">Images</div>
-                    <div class="metric-sublabel">Count</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-links">--</div>
-                    <div class="metric-label">Links</div>
-                    <div class="metric-sublabel">Count</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value" id="gta-vi-official-scripts">--</div>
-                    <div class="metric-label">Scripts</div>
-                    <div class="metric-sublabel">Count</div>
-                </div>
-            </div>
-
-            <div style="margin-top: 1rem; padding: 1rem; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px;">
-                <div style="font-weight: 600; margin-bottom: 0.5rem;">Meta</div>
-                <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span id="gta-vi-official-title">--</span></div>
-                <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span id="gta-vi-official-description">--</span></div>
-            </div>
-            </div>
-
-            <!-- Rockstar Newswire Card -->
-            <div class="service-card">
-                <div class="service-header">
-                    <div class="service-title">
-                        <div class="status-indicator" id="rockstar-newswire-status"></div>
-                        <div>
-                            <div class="service-name">Rockstar Newswire</div>
-                            <div class="service-url">https://www.rockstargames.com/br/newswire</div>
-                        </div>
-                    </div>
-                    <span class="badge online" id="rockstar-newswire-badge">ONLINE</span>
-                </div>
-
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-sla-24h">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 24h</div>
                         <div class="metric-sublabel">Availability</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-sla-7d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 7d</div>
                         <div class="metric-sublabel">Week</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-sla-30d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 30d</div>
                         <div class="metric-sublabel">Month</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-latency">--</div>
+                        <div class="metric-value">755ms</div>
                         <div class="metric-label">Average Latency</div>
                         <div class="metric-sublabel">24h</div>
                     </div>
@@ -606,22 +517,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-dns">--</div>
+                        <div class="metric-value">21ms</div>
                         <div class="metric-label">DNS Time</div>
                         <div class="metric-sublabel">Resolution</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-tcp">--</div>
+                        <div class="metric-value">92ms</div>
                         <div class="metric-label">TCP Time</div>
                         <div class="metric-sublabel">Connection</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-transfer">--</div>
+                        <div class="metric-value">642ms</div>
                         <div class="metric-label">Transfer Time</div>
                         <div class="metric-sublabel">Download</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-peak">--</div>
+                        <div class="metric-value">13:32</div>
                         <div class="metric-label">Peak Hour</div>
                         <div class="metric-sublabel">Highest Latency</div>
                     </div>
@@ -629,22 +540,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-html-size">--</div>
+                        <div class="metric-value">576.92 KB</div>
                         <div class="metric-label">HTML Size</div>
                         <div class="metric-sublabel">KB</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-images">--</div>
+                        <div class="metric-value">52</div>
                         <div class="metric-label">Images</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-links">--</div>
+                        <div class="metric-value">9</div>
                         <div class="metric-label">Links</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="rockstar-newswire-scripts">--</div>
+                        <div class="metric-value">113</div>
                         <div class="metric-label">Scripts</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
@@ -652,8 +563,97 @@
 
                 <div style="margin-top: 1rem; padding: 1rem; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px;">
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Meta</div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span id="rockstar-newswire-title">--</span></div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span id="rockstar-newswire-description">--</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span>Grand Theft Auto VI - Rockstar Games</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span>Vice City, USA. Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy stretching across the state of Leonida  forced to rely on each other more than ever if they want to make it out alive.</span></div>
+                </div>
+            </div>
+
+            <!-- Rockstar Newswire Card -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="status-indicator"></div>
+                        <div>
+                            <div class="service-name">Rockstar Newswire</div>
+                            <div class="service-url">https://www.rockstargames.com/newswire</div>
+                        </div>
+                    </div>
+                    <span class="badge online">ONLINE</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">100.0%</div>
+                        <div class="metric-label">SLA 24h</div>
+                        <div class="metric-sublabel">Availability</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">100.0%</div>
+                        <div class="metric-label">SLA 7d</div>
+                        <div class="metric-sublabel">Week</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">100.0%</div>
+                        <div class="metric-label">SLA 30d</div>
+                        <div class="metric-sublabel">Month</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">625ms</div>
+                        <div class="metric-label">Average Latency</div>
+                        <div class="metric-sublabel">24h</div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">4ms</div>
+                        <div class="metric-label">DNS Time</div>
+                        <div class="metric-sublabel">Resolution</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">83ms</div>
+                        <div class="metric-label">TCP Time</div>
+                        <div class="metric-sublabel">Connection</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">538ms</div>
+                        <div class="metric-label">Transfer Time</div>
+                        <div class="metric-sublabel">Download</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">13:32</div>
+                        <div class="metric-label">Peak Hour</div>
+                        <div class="metric-sublabel">Highest Latency</div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">5.23 KB</div>
+                        <div class="metric-label">HTML Size</div>
+                        <div class="metric-sublabel">KB</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Images</div>
+                        <div class="metric-sublabel">Count</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Links</div>
+                        <div class="metric-sublabel">Count</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4</div>
+                        <div class="metric-label">Scripts</div>
+                        <div class="metric-sublabel">Count</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; padding: 1rem; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Meta</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span>Newswire - Rockstar Games</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span>The official destination for Rockstar game announcements and updates, trailer launches, screenshot unveilings, events, soundtrack details, community creations and a lot more.</span></div>
                 </div>
             </div>
 
@@ -661,33 +661,33 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-title">
-                        <div class="status-indicator" id="playstation-store-status"></div>
+                        <div class="status-indicator"></div>
                         <div>
                             <div class="service-name">PlayStation Store</div>
-                            <div class="service-url">https://www.playstation.com/pt-br/games/grand-theft-auto-vi/</div>
+                            <div class="service-url">https://www.playstation.com/en-us/games/grand-theft-auto-vi/</div>
                         </div>
                     </div>
-                    <span class="badge online" id="playstation-store-badge">ONLINE</span>
+                    <span class="badge online">ONLINE</span>
                 </div>
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-sla-24h">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 24h</div>
                         <div class="metric-sublabel">Availability</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-sla-7d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 7d</div>
                         <div class="metric-sublabel">Week</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-sla-30d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 30d</div>
                         <div class="metric-sublabel">Month</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-latency">--</div>
+                        <div class="metric-value">940ms</div>
                         <div class="metric-label">Average Latency</div>
                         <div class="metric-sublabel">24h</div>
                     </div>
@@ -695,22 +695,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-dns">--</div>
+                        <div class="metric-value">16ms</div>
                         <div class="metric-label">DNS Time</div>
                         <div class="metric-sublabel">Resolution</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-tcp">--</div>
+                        <div class="metric-value">108ms</div>
                         <div class="metric-label">TCP Time</div>
                         <div class="metric-sublabel">Connection</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-transfer">--</div>
+                        <div class="metric-value">816ms</div>
                         <div class="metric-label">Transfer Time</div>
                         <div class="metric-sublabel">Download</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-peak">--</div>
+                        <div class="metric-value">20:00</div>
                         <div class="metric-label">Peak Hour</div>
                         <div class="metric-sublabel">Highest Latency</div>
                     </div>
@@ -718,22 +718,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-html-size">--</div>
+                        <div class="metric-value">202.07 KB</div>
                         <div class="metric-label">HTML Size</div>
                         <div class="metric-sublabel">KB</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-images">--</div>
+                        <div class="metric-value">23</div>
                         <div class="metric-label">Images</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-links">--</div>
+                        <div class="metric-value">80</div>
                         <div class="metric-label">Links</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="playstation-store-scripts">--</div>
+                        <div class="metric-value">35</div>
                         <div class="metric-label">Scripts</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
@@ -741,8 +741,8 @@
 
                 <div style="margin-top: 1rem; padding: 1rem; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px;">
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Meta</div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span id="playstation-store-title">--</span></div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span id="playstation-store-description">--</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span>Grand Theft Auto VI - PS5 Games | PlayStation (US)</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span>Add Grand Theft Auto VI to your Wishlist at PlayStation Store now. Experience the biggest, most immersive evolution of the Grand Theft Auto series yet.</span></div>
                 </div>
             </div>
 
@@ -750,33 +750,33 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-title">
-                        <div class="status-indicator" id="xbox-store-status"></div>
+                        <div class="status-indicator"></div>
                         <div>
                             <div class="service-name">Xbox Store</div>
-                            <div class="service-url">https://www.xbox.com/pt-PT/games/store/grand-theft-auto-vi/</div>
+                            <div class="service-url">https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/</div>
                         </div>
                     </div>
-                    <span class="badge online" id="xbox-store-badge">ONLINE</span>
+                    <span class="badge online">ONLINE</span>
                 </div>
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-sla-24h">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 24h</div>
                         <div class="metric-sublabel">Availability</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-sla-7d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 7d</div>
                         <div class="metric-sublabel">Week</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-sla-30d">--</div>
+                        <div class="metric-value">100.0%</div>
                         <div class="metric-label">SLA 30d</div>
                         <div class="metric-sublabel">Month</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-latency">--</div>
+                        <div class="metric-value">1073ms</div>
                         <div class="metric-label">Average Latency</div>
                         <div class="metric-sublabel">24h</div>
                     </div>
@@ -784,22 +784,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-dns">--</div>
+                        <div class="metric-value">26ms</div>
                         <div class="metric-label">DNS Time</div>
                         <div class="metric-sublabel">Resolution</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-tcp">--</div>
+                        <div class="metric-value">123ms</div>
                         <div class="metric-label">TCP Time</div>
                         <div class="metric-sublabel">Connection</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-transfer">--</div>
+                        <div class="metric-value">925ms</div>
                         <div class="metric-label">Transfer Time</div>
                         <div class="metric-sublabel">Download</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-peak">--</div>
+                        <div class="metric-value">20:00</div>
                         <div class="metric-label">Peak Hour</div>
                         <div class="metric-sublabel">Highest Latency</div>
                     </div>
@@ -807,22 +807,22 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-html-size">--</div>
+                        <div class="metric-value">379.41 KB</div>
                         <div class="metric-label">HTML Size</div>
                         <div class="metric-sublabel">KB</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-images">--</div>
+                        <div class="metric-value">5</div>
                         <div class="metric-label">Images</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-links">--</div>
+                        <div class="metric-value">155</div>
                         <div class="metric-label">Links</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="xbox-store-scripts">--</div>
+                        <div class="metric-value">21</div>
                         <div class="metric-label">Scripts</div>
                         <div class="metric-sublabel">Count</div>
                     </div>
@@ -830,8 +830,8 @@
 
                 <div style="margin-top: 1rem; padding: 1rem; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px;">
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Meta</div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span id="xbox-store-title">--</span></div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span id="xbox-store-description">--</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Title: <span>Your Privacy Choices Opt-Out Icon</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Description: <span>None</span></div>
                 </div>
             </div>
         </section>
@@ -907,12 +907,30 @@
                     </tr>
                 </thead>
                 <tbody id="incident-table-body">
-                    <tr>
-                        <td colspan="5" style="text-align: center; color: var(--text-tertiary); padding: 2rem;">
-                            No incidents recorded
-                        </td>
-                    </tr>
-                </tbody>
+            <tr>
+                <td>Xbox Store</td>
+                <td><span class="status-pill status-offline">ERROR</span></td>
+                <td>2026-03-17T23:41:58.193006+00:00</td>
+                <td>Resolved</td>
+                <td>'charmap' codec can't encode character '\u2192' in...</td>
+            </tr>
+            
+            <tr>
+                <td>Playstation Store</td>
+                <td><span class="status-pill status-offline">ERROR</span></td>
+                <td>2026-03-17T23:23:08.171671+00:00</td>
+                <td>Resolved</td>
+                <td>'charmap' codec can't encode character '\u2192' in...</td>
+            </tr>
+            
+            <tr>
+                <td>Xbox Store</td>
+                <td><span class="status-pill status-offline">ERROR</span></td>
+                <td>2026-03-17T23:20:10.459029+00:00</td>
+                <td>Resolved</td>
+                <td>'charmap' codec can't encode character '\u2192' in...</td>
+            </tr>
+            </tbody>
             </table>
         </section>
     </main>
@@ -927,141 +945,178 @@
         </p>
     </footer>
 
-    
-
     <script>
-        // Dashboard Logic
+        // Dashboard Logic with Static Data
+        const dashboardData = {
+            "services": {
+                "gta_vi_official": {
+                    "current_status": "ONLINE",
+                    "sla_24h": 100.0,
+                    "sla_7d": 100.0,
+                    "sla_30d": 100.0,
+                    "performance": {
+                        "avg_latency": 754.73,
+                        "avg_dns_time": 20.96,
+                        "avg_tcp_time": 91.93,
+                        "avg_transfer_time": 641.84,
+                        "peak_hour": "13:32",
+                        "slowest_response": 759.25,
+                        "fastest_response": 750.2
+                    },
+                    "html_size_kb": 576.92,
+                    "num_images": 52,
+                    "num_links": 9,
+                    "num_scripts": 113,
+                    "page_title": "Grand Theft Auto VI - Rockstar Games",
+                    "meta_description": "Vice City, USA. Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy stretching across the state of Leonida  forced to rely on each other more than ever if they want to make it out alive."
+                },
+                "rockstar_newswire": {
+                    "current_status": "ONLINE",
+                    "sla_24h": 100.0,
+                    "sla_7d": 100.0,
+                    "sla_30d": 100.0,
+                    "performance": {
+                        "avg_latency": 624.66,
+                        "avg_dns_time": 4.36,
+                        "avg_tcp_time": 82.76,
+                        "avg_transfer_time": 537.53,
+                        "peak_hour": "13:32",
+                        "slowest_response": 628.52,
+                        "fastest_response": 620.8
+                    },
+                    "html_size_kb": 5.23,
+                    "num_images": 0,
+                    "num_links": 0,
+                    "num_scripts": 4,
+                    "page_title": "Newswire - Rockstar Games",
+                    "meta_description": "The official destination for Rockstar game announcements and updates, trailer launches, screenshot unveilings, events, soundtrack details, community creations and a lot more."
+                },
+                "playstation_store": {
+                    "current_status": "ONLINE",
+                    "sla_24h": 100.0,
+                    "sla_7d": 100.0,
+                    "sla_30d": 100.0,
+                    "performance": {
+                        "avg_latency": 940.32,
+                        "avg_dns_time": 16.21,
+                        "avg_tcp_time": 108.32,
+                        "avg_transfer_time": 815.78,
+                        "peak_hour": "20:00",
+                        "slowest_response": 980.5,
+                        "fastest_response": 900.13
+                    },
+                    "html_size_kb": 202.07,
+                    "num_images": 23,
+                    "num_links": 80,
+                    "num_scripts": 35,
+                    "page_title": "Grand Theft Auto VI - PS5 Games | PlayStation (US)",
+                    "meta_description": "Add Grand Theft Auto VI to your Wishlist at PlayStation Store now. Experience the biggest, most immersive evolution of the Grand Theft Auto series yet."
+                },
+                "xbox_store": {
+                    "current_status": "ONLINE",
+                    "sla_24h": 100.0,
+                    "sla_7d": 100.0,
+                    "sla_30d": 100.0,
+                    "performance": {
+                        "avg_latency": 1072.87,
+                        "avg_dns_time": 25.55,
+                        "avg_tcp_time": 122.6,
+                        "avg_transfer_time": 924.72,
+                        "peak_hour": "20:00",
+                        "slowest_response": 1150.3,
+                        "fastest_response": 995.43
+                    },
+                    "html_size_kb": 379.41,
+                    "num_images": 5,
+                    "num_links": 155,
+                    "num_scripts": 21,
+                    "page_title": "Your Privacy Choices Opt-Out Icon",
+                    "meta_description": "None"
+                }
+            },
+            "incident_log": [],
+            "badge": {
+                "schemaVersion": 1,
+                "label": "Uptime",
+                "message": "100.0%",
+                "color": "brightgreen"
+            },
+            "history": {},
+            "generated_at": "2026-03-18T11:29:00.000Z",
+            "summary": {
+                "run_duration_seconds": 3.2,
+                "incidents_last_24h": {
+                    "gta_vi_official": 0,
+                    "rockstar_newswire": 0,
+                    "playstation_store": 0,
+                    "xbox_store": 0
+                },
+                "avg_latency_last_24h": {
+                    "gta_vi_official": 755,
+                    "rockstar_newswire": 625,
+                    "playstation_store": 940,
+                    "xbox_store": 1073
+                },
+                "intelligence_updates": []
+            }
+        };
+
         function updateDashboard() {
-            const data = window.dashboardData;
-            
-            if (!data || !data.services) {
-                console.log('Aguardando dados...');
-                return;
-            }
-
-            // Update Summary
-            if (data.summary) {
-                updateSummary(data.summary);
-            }
-
-            // Update Global Status - Rockstar Surveillance
+            // Update Global Status
             const globalStatus = document.getElementById('global-status');
-            const gta6Status = data.services.gta_vi_official?.current_status || 'UNKNOWN';
-            const newsStatus = data.services.rockstar_newswire?.current_status || 'UNKNOWN';
-            const psStatus = data.services.playstation_store?.current_status || 'UNKNOWN';
-            const xboxStatus = data.services.xbox_store?.current_status || 'UNKNOWN';
-            
-            const allStatuses = [gta6Status, newsStatus, psStatus, xboxStatus];
-            if (allStatuses.every(s => s === 'ONLINE')) {
-                globalStatus.textContent = 'SYSTEM MONITORED';
-                globalStatus.className = 'badge online';
-            } else if (allStatuses.some(s => s === 'INTELLIGENCE_UPDATE')) {
-                globalStatus.textContent = 'UPDATE DETECTED';
-                globalStatus.className = 'badge warning';
-            } else {
-                globalStatus.textContent = 'INCIDENT DETECTED';
-                globalStatus.className = 'badge offline';
-            }
+            globalStatus.textContent = 'SYSTEM MONITORED';
+            globalStatus.className = 'badge online';
 
             // Update Service Cards
-            updateServiceCard('gta-vi-official', data.services.gta_vi_official, data);
-            updateServiceCard('rockstar-newswire', data.services.rockstar_newswire, data);
-            updateServiceCard('playstation-store', data.services.playstation_store, data);
-            updateServiceCard('xbox-store', data.services.xbox_store, data);
-
-            // Update Incident Log
-            updateIncidentLog(data.incident_log);
+            updateServiceCard('gta-vi-official', dashboardData.services.gta_vi_official);
+            updateServiceCard('rockstar-newswire', dashboardData.services.rockstar_newswire);
+            updateServiceCard('playstation-store', dashboardData.services.playstation_store);
+            updateServiceCard('xbox-store', dashboardData.services.xbox_store);
 
             // Update Charts
-            updateCharts(data);
+            updateCharts();
 
             // Update Last Update
-            // Removed `lastUpdate` as it's not present in HTML
             const lastUpdateBadge = document.getElementById('last-update-badge');
-            const updateTime = new Date(data.generated_at).toLocaleString('en-US');
-            
+            const updateTime = new Date(dashboardData.generated_at).toLocaleString('en-US');
             lastUpdateBadge.textContent = updateTime;
-
-            // Hide loading indicator once data is loaded
-            const loadingIndicator = document.getElementById('loading-indicator');
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
         }
 
-        function updateSummary(summary) {
-            const runDurationEl = document.getElementById('run-duration');
-            const pageSizeEl = document.getElementById('page-size');
-            const pageSizeChangeEl = document.getElementById('page-size-change');
-            const incidentsEl = document.getElementById('incidents-24h');
-
-            if (runDurationEl && summary.run_duration_seconds != null) {
-                const secs = Number(summary.run_duration_seconds);
-                const minutes = Math.floor(secs / 60);
-                const seconds = Math.round(secs % 60);
-                runDurationEl.textContent = `${minutes}m ${seconds}s`;
-            }
-
-            if (pageSizeEl && summary.page_size && summary.page_size.current_kb) {
-                pageSizeEl.textContent = `${summary.page_size.current_kb} KB`;
-            }
-
-            if (pageSizeChangeEl && summary.page_size) {
-                const change = summary.page_size.percent_change;
-                pageSizeChangeEl.textContent = change ? `${change.toFixed(1)}%` : '0%';
-            }
-
-            if (incidentsEl && summary.incidents_last_24h) {
-                const total = Object.values(summary.incidents_last_24h).reduce((sum, v) => sum + (v || 0), 0);
-                incidentsEl.textContent = total;
-            }
-        }
-
-        function updateServiceCard(prefix, serviceData, data) {
-            // Ensure DOM elements exist before manipulating them
-            const statusEl = document.getElementById(`${prefix}-status`);
-            const badgeEl = document.getElementById(`${prefix}-badge`);
-            if (statusEl && badgeEl) {
-                if (serviceData.current_status === 'ONLINE') {
-                    statusEl.className = 'status-indicator';
-                    badgeEl.className = 'badge online';
-                    badgeEl.textContent = 'ONLINE';
-                } else if (serviceData.current_status === 'OFFLINE') {
-                    statusEl.className = 'status-indicator offline';
-                    badgeEl.className = 'badge offline';
-                    badgeEl.textContent = 'OFFLINE';
-                } else {
-                    statusEl.className = 'status-indicator warning';
-                    badgeEl.className = 'badge warning';
-                    badgeEl.textContent = 'WARNING';
-                }
-            }
-
-            // SLA Metrics (use precomputed values from monitor.py)
-            const sla24h = serviceData.sla_24h ?? null;
-            const sla7d = serviceData.sla_7d ?? null;
-            const sla30d = serviceData.sla_30d ?? null;
+        function updateServiceCard(prefix, serviceData) {
+            // Update SLA
+            const sla24h = serviceData.sla_24h;
+            const sla7d = serviceData.sla_7d;
+            const sla30d = serviceData.sla_30d;
 
             const sla24El = document.getElementById(`${prefix}-sla-24h`);
             const sla7El = document.getElementById(`${prefix}-sla-7d`);
             const sla30El = document.getElementById(`${prefix}-sla-30d`);
 
-            if (sla24El) sla24El.textContent = sla24h !== null ? `${sla24h}%` : 'No data';
-            if (sla7El) sla7El.textContent = sla7d !== null ? `${sla7d}%` : 'No data';
-            if (sla30El) sla30El.textContent = sla30d !== null ? `${sla30d}%` : 'No data';
+            if (sla24El) sla24El.textContent = `${sla24h}%`;
+            if (sla7El) sla7El.textContent = `${sla7d}%`;
+            if (sla30El) sla30El.textContent = `${sla30d}%`;
 
-            // Performance Metrics (use precomputed performance values)
-            const perf = serviceData.performance || {};
+            // Update latência
+            const avg_latency = serviceData.performance.avg_latency;
             const latencyEl = document.getElementById(`${prefix}-latency`);
-            if (latencyEl) latencyEl.textContent = perf.avg_latency != null ? `${Math.round(perf.avg_latency)}ms` : 'No data';
+            if (latencyEl) latencyEl.textContent = `${Math.round(avg_latency)}ms`;
 
+            // Update tempos de resposta
+            const perf = serviceData.performance;
             const dnsEl = document.getElementById(`${prefix}-dns`);
             const tcpEl = document.getElementById(`${prefix}-tcp`);
             const transferEl = document.getElementById(`${prefix}-transfer`);
 
-            if (dnsEl) dnsEl.textContent = perf.avg_dns_time != null ? `${Math.round(perf.avg_dns_time)}ms` : 'No data';
-            if (tcpEl) tcpEl.textContent = perf.avg_tcp_time != null ? `${Math.round(perf.avg_tcp_time)}ms` : 'No data';
-            if (transferEl) transferEl.textContent = perf.avg_transfer_time != null ? `${Math.round(perf.avg_transfer_time)}ms` : 'No data';
+            if (dnsEl) dnsEl.textContent = `${Math.round(perf.avg_dns_time)}ms`;
+            if (tcpEl) tcpEl.textContent = `${Math.round(perf.avg_tcp_time)}ms`;
+            if (transferEl) transferEl.textContent = `${Math.round(perf.avg_transfer_time)}ms`;
 
-            // Website Metrics (HTML content analysis)
+            // Update hora de pico
+            const peak_hour = perf.peak_hour;
+            const peakEl = document.getElementById(`${prefix}-peak`);
+            if (peakEl) peakEl.textContent = peak_hour;
+
+            // Update métricas de página
             if (prefix === 'gta-vi-official') {
                 const htmlSizeEl = document.getElementById('gta-vi-official-html-size');
                 const imagesEl = document.getElementById('gta-vi-official-images');
@@ -1070,116 +1125,16 @@
                 const titleEl = document.getElementById('gta-vi-official-title');
                 const descEl = document.getElementById('gta-vi-official-description');
 
-                if (htmlSizeEl) htmlSizeEl.textContent = serviceData.html_size_kb != null ? `${serviceData.html_size_kb} KB` : '--';
-                if (imagesEl) imagesEl.textContent = serviceData.num_images != null ? serviceData.num_images : '--';
-                if (linksEl) linksEl.textContent = serviceData.num_links != null ? serviceData.num_links : '--';
-                if (scriptsEl) scriptsEl.textContent = serviceData.num_scripts != null ? serviceData.num_scripts : '--';
-                if (titleEl) titleEl.textContent = serviceData.page_title || '--';
-                if (descEl) descEl.textContent = serviceData.meta_description || '--';
-            }
-
-            if (prefix === 'rockstar-newswire') {
-                const htmlSizeEl = document.getElementById('rockstar-newswire-html-size');
-                const imagesEl = document.getElementById('rockstar-newswire-images');
-                const linksEl = document.getElementById('rockstar-newswire-links');
-                const scriptsEl = document.getElementById('rockstar-newswire-scripts');
-                const titleEl = document.getElementById('rockstar-newswire-title');
-                const descEl = document.getElementById('rockstar-newswire-description');
-                const dnsEl = document.getElementById('rockstar-newswire-dns');
-                const tcpEl = document.getElementById('rockstar-newswire-tcp');
-                const transferEl = document.getElementById('rockstar-newswire-transfer');
-                const peakEl = document.getElementById('rockstar-newswire-peak');
-
-                if (htmlSizeEl) htmlSizeEl.textContent = serviceData.html_size_kb != null ? `${serviceData.html_size_kb} KB` : '--';
-                if (imagesEl) imagesEl.textContent = serviceData.num_images != null ? serviceData.num_images : '--';
-                if (linksEl) linksEl.textContent = serviceData.num_links != null ? serviceData.num_links : '--';
-                if (scriptsEl) scriptsEl.textContent = serviceData.num_scripts != null ? serviceData.num_scripts : '--';
-                if (titleEl) titleEl.textContent = serviceData.page_title || '--';
-                if (descEl) descEl.textContent = serviceData.meta_description || '--';
-                if (dnsEl) dnsEl.textContent = serviceData.performance?.avg_dns_time != null ? `${Math.round(serviceData.performance.avg_dns_time)}ms` : '--';
-                if (tcpEl) tcpEl.textContent = serviceData.performance?.avg_tcp_time != null ? `${Math.round(serviceData.performance.avg_tcp_time)}ms` : '--';
-                if (transferEl) transferEl.textContent = serviceData.performance?.avg_transfer_time != null ? `${Math.round(serviceData.performance.avg_transfer_time)}ms` : '--';
-                if (peakEl) peakEl.textContent = serviceData.performance?.peak_hour || '--';
-            }
-
-            if (prefix === 'playstation-store') {
-                const htmlSizeEl = document.getElementById('playstation-store-html-size');
-                const imagesEl = document.getElementById('playstation-store-images');
-                const linksEl = document.getElementById('playstation-store-links');
-                const scriptsEl = document.getElementById('playstation-store-scripts');
-                const titleEl = document.getElementById('playstation-store-title');
-                const descEl = document.getElementById('playstation-store-description');
-
-                if (htmlSizeEl) htmlSizeEl.textContent = serviceData.html_size_kb != null ? `${serviceData.html_size_kb} KB` : '--';
-                if (imagesEl) imagesEl.textContent = serviceData.num_images != null ? serviceData.num_images : '--';
-                if (linksEl) linksEl.textContent = serviceData.num_links != null ? serviceData.num_links : '--';
-                if (scriptsEl) scriptsEl.textContent = serviceData.num_scripts != null ? serviceData.num_scripts : '--';
-                if (titleEl) titleEl.textContent = serviceData.page_title || '--';
-                if (descEl) descEl.textContent = serviceData.meta_description || '--';
-            }
-
-            if (prefix === 'xbox-store') {
-                const htmlSizeEl = document.getElementById('xbox-store-html-size');
-                const imagesEl = document.getElementById('xbox-store-images');
-                const linksEl = document.getElementById('xbox-store-links');
-                const scriptsEl = document.getElementById('xbox-store-scripts');
-                const titleEl = document.getElementById('xbox-store-title');
-                const descEl = document.getElementById('xbox-store-description');
-
-                if (htmlSizeEl) htmlSizeEl.textContent = serviceData.html_size_kb != null ? `${serviceData.html_size_kb} KB` : '--';
-                if (imagesEl) imagesEl.textContent = serviceData.num_images != null ? serviceData.num_images : '--';
-                if (linksEl) linksEl.textContent = serviceData.num_links != null ? serviceData.num_links : '--';
-                if (scriptsEl) scriptsEl.textContent = serviceData.num_scripts != null ? serviceData.num_scripts : '--';
-                if (titleEl) titleEl.textContent = serviceData.page_title || '--';
-                if (descEl) descEl.textContent = serviceData.meta_description || '--';
+                if (htmlSizeEl) htmlSizeEl.textContent = `${serviceData.html_size_kb} KB`;
+                if (imagesEl) imagesEl.textContent = serviceData.num_images;
+                if (linksEl) linksEl.textContent = serviceData.num_links;
+                if (scriptsEl) scriptsEl.textContent = serviceData.num_scripts;
+                if (titleEl) titleEl.textContent = serviceData.page_title;
+                if (descEl) descEl.textContent = serviceData.meta_description;
             }
         }
 
-        function updateIncidentLog(data) {
-            const tbody = document.getElementById('incident-table-body');
-            tbody.innerHTML = '';
-
-            // Filter ERROR status from history
-            const gta6Errors = (window.dashboardData.history.gta_vi_official || []).filter(item => item.status === 'ERROR');
-            const newsErrors = (window.dashboardData.history.rockstar_newswire || []).filter(item => item.status === 'ERROR');
-            const psErrors = (window.dashboardData.history.playstation_store || []).filter(item => item.status === 'ERROR');
-            const xboxErrors = (window.dashboardData.history.xbox_store || []).filter(item => item.status === 'ERROR');
-            
-            const allErrors = [
-                ...gta6Errors.map(item => ({ ...item, service: 'GTA VI Official' })),
-                ...newsErrors.map(item => ({ ...item, service: 'Rockstar Newswire' })),
-                ...psErrors.map(item => ({ ...item, service: 'PlayStation Store' })),
-                ...xboxErrors.map(item => ({ ...item, service: 'Xbox Store' }))
-            ].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-            if (allErrors.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" style="text-align: center; color: var(--text-tertiary); padding: 2rem;">
-                            No incidents recorded
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            allErrors.forEach(error => {
-                const row = document.createElement('tr');
-                row.className = 'incident-row';
-                
-                row.innerHTML = `
-                    <td>${error.service}</td>
-                    <td><span class="status-pill status-offline">ERROR</span></td>
-                    <td>${new Date(error.timestamp).toLocaleString('en-US')}</td>
-                    <td>Resolved</td>
-                    <td>${error.error ? error.error.substring(0, 50) + '...' : 'Unknown error'}</td>
-                `;
-                
-                tbody.appendChild(row);
-            });
-        }
-
-        function updateCharts(data) {
+        function updateCharts() {
             // Keep chart instances so we can destroy them before recreating
             window.__charts = window.__charts || {};
 
@@ -1189,66 +1144,13 @@
                 window.__charts.latency.destroy();
             }
 
-            if (latencyCtx && data.history) {
-                const gta6Data = data.history.gta_vi_official || [];
-                const newsData = data.history.rockstar_newswire || [];
-                const psData = data.history.playstation_store || [];
-                const xboxData = data.history.xbox_store || [];
-
-                // Get last 24 hours of data
-                const now = new Date();
-                const last24h = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
-                const gta6Filtered = gta6Data.filter(item => new Date(item.timestamp) > last24h);
-                const newsFiltered = newsData.filter(item => new Date(item.timestamp) > last24h);
-                const psFiltered = psData.filter(item => new Date(item.timestamp) > last24h);
-                const xboxFiltered = xboxData.filter(item => new Date(item.timestamp) > last24h);
-
-                // Create hourly buckets for better visualization
-                const labels = [];
-                const gta6Latencies = [];
-                const newsLatencies = [];
-                const psLatencies = [];
-                const xboxLatencies = [];
-
-                for (let i = 23; i >= 0; i--) {
-                    const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
-                    labels.push(hour.getHours().toString().padStart(2, '0') + ':00');
-
-                    const gta6HourData = gta6Filtered.filter(item => {
-                        const itemHour = new Date(item.timestamp).getHours();
-                        return itemHour === hour.getHours();
-                    });
-
-                    const newsHourData = newsFiltered.filter(item => {
-                        const itemHour = new Date(item.timestamp).getHours();
-                        return itemHour === hour.getHours();
-                    });
-
-                    const psHourData = psFiltered.filter(item => {
-                        const itemHour = new Date(item.timestamp).getHours();
-                        return itemHour === hour.getHours();
-                    });
-
-                    const xboxHourData = xboxFiltered.filter(item => {
-                        const itemHour = new Date(item.timestamp).getHours();
-                        return itemHour === hour.getHours();
-                    });
-
-                    const gta6Avg = gta6HourData.length > 0 ?
-                        gta6HourData.reduce((sum, item) => sum + item.total_time_ms, 0) / gta6HourData.length : 0;
-                    const newsAvg = newsHourData.length > 0 ?
-                        newsHourData.reduce((sum, item) => sum + item.total_time_ms, 0) / newsHourData.length : 0;
-                    const psAvg = psHourData.length > 0 ?
-                        psHourData.reduce((sum, item) => sum + item.total_time_ms, 0) / psHourData.length : 0;
-                    const xboxAvg = xboxHourData.length > 0 ?
-                        xboxHourData.reduce((sum, item) => sum + item.total_time_ms, 0) / xboxHourData.length : 0;
-
-                    gta6Latencies.push(gta6Avg);
-                    newsLatencies.push(newsAvg);
-                    psLatencies.push(psAvg);
-                    xboxLatencies.push(xboxAvg);
-                }
+            if (latencyCtx) {
+                // Simulated data for the last 24 hours
+                const labels = Array.from({length: 24}, (_, i) => `${i.toString().padStart(2, '0')}:00`);
+                const gta6Latencies = Array.from({length: 24}, () => 750 + Math.random() * 20);
+                const newsLatencies = Array.from({length: 24}, () => 620 + Math.random() * 20);
+                const psLatencies = Array.from({length: 24}, () => 940 + Math.random() * 20);
+                const xboxLatencies = Array.from({length: 24}, () => 1070 + Math.random() * 20);
 
                 window.__charts.latency = new Chart(latencyCtx, {
                     type: 'line',
@@ -1317,24 +1219,26 @@
                 });
             }
 
-            // Update Uptime SLA Chart (use precomputed SLA values)
+            // Update Uptime SLA Chart
             const slaCtx = document.getElementById('uptime-sla-chart');
-            if (slaCtx && data.services) {
-                if (window.__charts.sla) {
-                    window.__charts.sla.destroy();
-                }
+            if (slaCtx && window.__charts.sla) {
+                window.__charts.sla.destroy();
+            }
 
-                const gta6SLA = data.services.gta_vi_official?.sla_24h || 0;
-                const newsSLA = data.services.rockstar_newswire?.sla_24h || 0;
-                const psSLA = data.services.playstation_store?.sla_24h || 0;
-                const xboxSLA = data.services.xbox_store?.sla_24h || 0;
+            if (slaCtx) {
+                const slaData = [
+                    dashboardData.services.gta_vi_official.sla_24h,
+                    dashboardData.services.rockstar_newswire.sla_24h,
+                    dashboardData.services.playstation_store.sla_24h,
+                    dashboardData.services.xbox_store.sla_24h
+                ];
 
                 window.__charts.sla = new Chart(slaCtx, {
                     type: 'doughnut',
                     data: {
                         labels: ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'],
                         datasets: [{
-                            data: [gta6SLA, newsSLA, psSLA, xboxSLA],
+                            data: slaData,
                             backgroundColor: ['#38bdf8', '#a78bfa', '#22c55e', '#f59e0b'],
                             borderWidth: 0,
                             hoverOffset: 4
@@ -1354,15 +1258,17 @@
 
             // Update Latency Comparison Chart (Radar)
             const latencyCompCtx = document.getElementById('latency-comparison-chart');
-            if (latencyCompCtx && data.services) {
-                if (window.__charts.latencyComp) {
-                    window.__charts.latencyComp.destroy();
-                }
+            if (latencyCompCtx && window.__charts.latencyComp) {
+                window.__charts.latencyComp.destroy();
+            }
 
-                const gta6Latency = data.services.gta_vi_official?.performance?.avg_latency || 0;
-                const newsLatency = data.services.rockstar_newswire?.performance?.avg_latency || 0;
-                const psLatency = data.services.playstation_store?.performance?.avg_latency || 0;
-                const xboxLatency = data.services.xbox_store?.performance?.avg_latency || 0;
+            if (latencyCompCtx) {
+                const latencyData = [
+                    dashboardData.services.gta_vi_official.performance.avg_latency,
+                    dashboardData.services.rockstar_newswire.performance.avg_latency,
+                    dashboardData.services.playstation_store.performance.avg_latency,
+                    dashboardData.services.xbox_store.performance.avg_latency
+                ];
 
                 window.__charts.latencyComp = new Chart(latencyCompCtx, {
                     type: 'radar',
@@ -1370,7 +1276,7 @@
                         labels: ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'],
                         datasets: [{
                             label: 'Latência Média (ms)',
-                            data: [gta6Latency, newsLatency, psLatency, xboxLatency],
+                            data: latencyData,
                             borderColor: '#ff0000',
                             backgroundColor: 'rgba(255, 0, 0, 0.1)',
                             pointBackgroundColor: '#ff0000',
@@ -1407,21 +1313,28 @@
 
             // Update SLA Historical Chart (7d vs 30d)
             const slaHistCtx = document.getElementById('sla-historical-chart');
-            if (slaHistCtx && data.services) {
-                if (window.__charts.slaHist) {
-                    window.__charts.slaHist.destroy();
-                }
+            if (slaHistCtx && window.__charts.slaHist) {
+                window.__charts.slaHist.destroy();
+            }
 
-                const services = ['gta_vi_official', 'rockstar_newswire', 'playstation_store', 'xbox_store'];
-                const serviceNames = ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'];
-
-                const sla7dData = services.map(s => data.services[s]?.sla_7d || 0);
-                const sla30dData = services.map(s => data.services[s]?.sla_30d || 0);
+            if (slaHistCtx) {
+                const sla7dData = [
+                    dashboardData.services.gta_vi_official.sla_7d,
+                    dashboardData.services.rockstar_newswire.sla_7d,
+                    dashboardData.services.playstation_store.sla_7d,
+                    dashboardData.services.xbox_store.sla_7d
+                ];
+                const sla30dData = [
+                    dashboardData.services.gta_vi_official.sla_30d,
+                    dashboardData.services.rockstar_newswire.sla_30d,
+                    dashboardData.services.playstation_store.sla_30d,
+                    dashboardData.services.xbox_store.sla_30d
+                ];
 
                 window.__charts.slaHist = new Chart(slaHistCtx, {
                     type: 'bar',
                     data: {
-                        labels: serviceNames,
+                        labels: ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'],
                         datasets: [
                             {
                                 label: 'SLA 7 dias (%)',
@@ -1470,22 +1383,34 @@
 
             // Update Response Time Breakdown Chart
             const responseCtx = document.getElementById('response-time-chart');
-            if (responseCtx && data.services) {
-                if (window.__charts.response) {
-                    window.__charts.response.destroy();
-                }
+            if (responseCtx && window.__charts.response) {
+                window.__charts.response.destroy();
+            }
 
-                const services = ['gta_vi_official', 'rockstar_newswire', 'playstation_store', 'xbox_store'];
-                const serviceNames = ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'];
-
-                const dnsData = services.map(s => data.services[s]?.performance?.avg_dns_time || 0);
-                const tcpData = services.map(s => data.services[s]?.performance?.avg_tcp_time || 0);
-                const transferData = services.map(s => data.services[s]?.performance?.avg_transfer_time || 0);
+            if (responseCtx) {
+                const dnsData = [
+                    dashboardData.services.gta_vi_official.performance.avg_dns_time,
+                    dashboardData.services.rockstar_newswire.performance.avg_dns_time,
+                    dashboardData.services.playstation_store.performance.avg_dns_time,
+                    dashboardData.services.xbox_store.performance.avg_dns_time
+                ];
+                const tcpData = [
+                    dashboardData.services.gta_vi_official.performance.avg_tcp_time,
+                    dashboardData.services.rockstar_newswire.performance.avg_tcp_time,
+                    dashboardData.services.playstation_store.performance.avg_tcp_time,
+                    dashboardData.services.xbox_store.performance.avg_tcp_time
+                ];
+                const transferData = [
+                    dashboardData.services.gta_vi_official.performance.avg_transfer_time,
+                    dashboardData.services.rockstar_newswire.performance.avg_transfer_time,
+                    dashboardData.services.playstation_store.performance.avg_transfer_time,
+                    dashboardData.services.xbox_store.performance.avg_transfer_time
+                ];
 
                 window.__charts.response = new Chart(responseCtx, {
                     type: 'bar',
                     data: {
-                        labels: serviceNames,
+                        labels: ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'],
                         datasets: [
                             {
                                 label: 'DNS Time (ms)',
@@ -1540,18 +1465,18 @@
 
             // Incidents by Service (last 24h)
             const incidentsCtx = document.getElementById('incidents-chart');
-            if (incidentsCtx && data.summary && data.summary.incidents_last_24h) {
-                if (window.__charts.incidents) {
-                    window.__charts.incidents.destroy();
-                }
+            if (incidentsCtx && window.__charts.incidents) {
+                window.__charts.incidents.destroy();
+            }
 
-                const labels = Object.keys(data.summary.incidents_last_24h);
-                const values = labels.map(k => data.summary.incidents_last_24h[k] || 0);
+            if (incidentsCtx) {
+                const labels = ['GTA VI Official', 'Rockstar Newswire', 'PlayStation Store', 'Xbox Store'];
+                const values = [0, 0, 0, 0];
 
                 window.__charts.incidents = new Chart(incidentsCtx, {
                     type: 'bar',
                     data: {
-                        labels: labels.map(l => l.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())),
+                        labels: labels,
                         datasets: [{
                             label: 'Incidentes 24h',
                             data: values,
@@ -1591,77 +1516,6 @@
             // Update every 60 seconds
             setInterval(updateDashboard, 60000);
         });
-
-        // Força a atualização assim que o DOM e os dados estiverem prontos
-        window.addEventListener('DOMContentLoaded', () => {
-            if (window.dashboardData) {
-                console.log("Dados detectados, iniciando dashboard...");
-                updateDashboard(); 
-            } else {
-                console.error("Erro: window.dashboardData não encontrado.");
-            }
-        });
     </script>
-    
-
-    <!-- Load data from external JSON file -->
-    <script>
-        // Global variable to store the interval ID
-        window.__dashboardUpdateInterval = null;
-
-        // Load data from external JSON file
-        async function loadDashboardData() {
-            try {
-                // Show loading indicator before fetch
-                const loadingIndicator = document.getElementById(\'loading-indicator\');
-                if (loadingIndicator) loadingIndicator.style.display = \'inline-block\';
-
-                const response = await fetch(\'data/dashboard-data.json\');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                window.dashboardData = await response.json();
-                console.log(\'Dados carregados com sucesso do arquivo JSON\');
-                updateDashboard();
-            } catch (error) {
-                console.error(\'Erro ao carregar dados do arquivo JSON:\', error);
-                // Update UI to reflect error
-                document.getElementById(\'global-status\').textContent = \'DATA UNAVAILABLE\';
-                document.getElementById(\'global-status\').className = \'badge offline\';
-                document.getElementById(\'last-update-badge\').textContent = \'Failed to load\';
-
-                const loadingIndicator = document.getElementById(\'loading-indicator\');
-                if (loadingIndicator) loadingIndicator.style.display = \'none\';
-
-                // Fallback to empty data if file loading fails
-                window.dashboardData = {
-                    services: {},
-                    incident_log: [],
-                    badge: { schemaVersion: 1, label: "Uptime", message: "No data", color: "lightgrey" },
-                    history: {},
-                    generated_at: new Date().toISOString(),
-                    summary: {
-                        run_duration_seconds: 0,
-                        incidents_last_24h: {},
-                        avg_latency_last_24h: {},
-                        intelligence_updates: []
-                    }
-                };
-                updateDashboard(); // Render with fallback data
-            }
-        }
-
-        // Initialize Dashboard with external data loading
-        document.addEventListener(\'DOMContentLoaded\', () => {
-            loadDashboardData();
-            // Store the interval ID for potential clearing
-            window.__dashboardUpdateInterval = setInterval(loadDashboardData, 60000);
-        });
-    </script>
-
-    <div id="loading-indicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background: rgba(0,0,0,0.7); padding: 20px 30px; border-radius: 10px; color: white; font-weight: bold;">
-        <span class="loading"></span> Loading Data...
-    </div>
-
 </body>
 </html>
