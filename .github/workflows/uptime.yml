@@ -19,13 +19,22 @@ jobs:
         with:
           fetch-depth: 0
 
+      # --- ESTRATÉGIA DE JANELA DINÂMICA ---
       - name: Check Maintenance Window
         run: |
           CURRENT_TIME=$(date -u -d "-3 hours" +"%H%M")
-          echo "Current local time: $CURRENT_TIME"
+          DATE_SEED=$(date -u -d "-3 hours" +"%Y%m%d")
           
-          if [ "$CURRENT_TIME" -ge "2335" ] || [ "$CURRENT_TIME" -lt "0600" ]; then
-            echo "Outside operational hours. Skipping update."
+          RANDOM_OFFSET=$(echo "$DATE_SEED" | awk '{print ($1 % 60)}')
+          
+          STOP_LIMIT=$(( 2235 + RANDOM_OFFSET ))
+          
+          START_LIMIT=$(( 0600 + RANDOM_OFFSET ))
+          
+          echo "Current: $CURRENT_TIME | Today's Stop: $STOP_LIMIT | Today's Start: $START_LIMIT"
+          
+          if [ "$CURRENT_TIME" -ge "$STOP_LIMIT" ] || [ "$CURRENT_TIME" -lt "$START_LIMIT" ]; then
+            echo "Sleeping hours. Skipping update to mimic human behavior."
             exit 0
           fi
 
@@ -84,6 +93,7 @@ jobs:
       - name: Validation Period
         if: steps.changes.outputs.CHANGES == 'true'
         run: |
+          # Simula o tempo de revisão do PR antes de mesclar
           SEC=$(( ( RANDOM % 1200 )  + 900 ))
           sleep $SEC
 
