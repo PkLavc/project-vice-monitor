@@ -19,7 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      # --- ESTRATÉGIA DE JANELA DINÂMICA ---
       - name: Check Maintenance Window
         run: |
           CURRENT_TIME=$(date -u -d "-3 hours" +"%H%M")
@@ -28,7 +27,6 @@ jobs:
           RANDOM_OFFSET=$(echo "$DATE_SEED" | awk '{print ($1 % 60)}')
           
           STOP_LIMIT=$(( 2235 + RANDOM_OFFSET ))
-          
           START_LIMIT=$(( 0600 + RANDOM_OFFSET ))
           
           echo "Current: $CURRENT_TIME | Today's Stop: $STOP_LIMIT | Today's Start: $START_LIMIT"
@@ -84,16 +82,19 @@ jobs:
           git checkout -b $NEW_BRANCH
           git add .
           
+          # Garante que a branch local está sobre a main mais atual antes do push
+          git fetch origin main
+          git rebase origin/main
+          
           MESSAGES=("docs: update monitoring logs" "feat: refresh dashboard data" "chore: sync system metrics" "fix: update uptime status")
           RANDOM_MSG=${MESSAGES[$(( RANDOM % ${#MESSAGES[@]} ))]}
           
           git commit -m "$RANDOM_MSG"
-          git push origin $NEW_BRANCH
+          git push origin $NEW_BRANCH --force
 
       - name: Validation Period
         if: steps.changes.outputs.CHANGES == 'true'
         run: |
-          # Simula o tempo de revisão do PR antes de mesclar
           SEC=$(( ( RANDOM % 1200 )  + 900 ))
           sleep $SEC
 
@@ -103,7 +104,12 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_SHARK }}
         run: |
           PR_TITLE="SRE: System Metrics Update $(date +'%H:%M')"
+          
+          # Cria o PR e captura a URL
           PR_URL=$(gh pr create --title "$PR_TITLE" --body "Synchronization of observability metrics." --base main --head ${{ env.SRE_BRANCH }})
           
+          # Pequeno delay para o GitHub processar o PR
           sleep $(( ( RANDOM % 60 ) + 30 ))
+          
+          # Tenta o merge com squash e deleta a branch após sucesso
           gh pr merge "$PR_URL" --squash --delete-branch --admin
