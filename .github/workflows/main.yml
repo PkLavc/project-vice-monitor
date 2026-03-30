@@ -12,11 +12,25 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0 
+
+      - name: Config Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Run Check
-        run: python monitor.py
+        run: |
+          git reset --hard HEAD
+          python monitor.py
         
       - name: Auto PR and Merge
         env:
           GH_TOKEN: ${{ secrets.PAT_SHARK }}
-        run: bash workflow.sh
+        run: |
+          git add .
+          git stash || true
+          git pull --rebase origin main -X ours
+          git stash pop || true
+          bash workflow.sh
