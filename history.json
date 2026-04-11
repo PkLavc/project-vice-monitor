@@ -130,6 +130,7 @@
         "meta_description": "Vice City, USA. Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy stretching across the state of Leonida \u2014 forced to rely on each other more than ever if they want to make it out alive."
       },
       {
+<<<<<<< Updated upstream
         "timestamp": "2026-04-11T10:15:33.048011+00:00",
         "url": "https://www.rockstargames.com/VI/",
         "status": "ONLINE",
@@ -138,6 +139,16 @@
         "dns_time_ms": 44.51,
         "tcp_time_ms": 5.52,
         "transfer_time_ms": 159.31,
+=======
+        "timestamp": "2026-04-11T11:02:10.864885+00:00",
+        "url": "https://www.rockstargames.com/VI/",
+        "status": "ONLINE",
+        "http_code": 200,
+        "total_time_ms": 131.29,
+        "dns_time_ms": 29.84,
+        "tcp_time_ms": 6.15,
+        "transfer_time_ms": 95.3,
+>>>>>>> Stashed changes
         "content_ok": true,
         "found_keywords": [
           "Grand Theft Auto",
@@ -296,6 +307,7 @@
         "meta_description": "The official destination for Rockstar game announcements and updates, trailer launches, screenshot unveilings, events, soundtrack details, community creations and a lot more."
       },
       {
+<<<<<<< Updated upstream
         "timestamp": "2026-04-11T10:15:33.319923+00:00",
         "url": "https://www.rockstargames.com/newswire",
         "status": "ONLINE",
@@ -304,6 +316,16 @@
         "dns_time_ms": 0.29,
         "tcp_time_ms": 5.77,
         "transfer_time_ms": 89.72,
+=======
+        "timestamp": "2026-04-11T11:02:11.045905+00:00",
+        "url": "https://www.rockstargames.com/newswire",
+        "status": "ONLINE",
+        "http_code": 200,
+        "total_time_ms": 124.83,
+        "dns_time_ms": 0.45,
+        "tcp_time_ms": 6.0,
+        "transfer_time_ms": 118.38,
+>>>>>>> Stashed changes
         "content_ok": true,
         "found_keywords": [
           "Rockstar",
@@ -459,6 +481,7 @@
         "meta_description": "Add Grand Theft Auto VI to your Wishlist at PlayStation Store now. Experience the biggest, most immersive evolution of the Grand Theft Auto series yet."
       },
       {
+<<<<<<< Updated upstream
         "timestamp": "2026-04-11T10:15:33.423334+00:00",
         "url": "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
         "status": "ONLINE",
@@ -467,6 +490,16 @@
         "dns_time_ms": 134.45,
         "tcp_time_ms": 6.25,
         "transfer_time_ms": 101.7,
+=======
+        "timestamp": "2026-04-11T11:02:11.178950+00:00",
+        "url": "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
+        "status": "ONLINE",
+        "http_code": 200,
+        "total_time_ms": 102.34,
+        "dns_time_ms": 19.21,
+        "tcp_time_ms": 6.11,
+        "transfer_time_ms": 77.02,
+>>>>>>> Stashed changes
         "content_ok": true,
         "found_keywords": [
           "Grand Theft Auto",
@@ -621,6 +654,7 @@
         "meta_description": null
       },
       {
+<<<<<<< Updated upstream
         "timestamp": "2026-04-11T10:15:33.811102+00:00",
         "url": "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9NL3WWNZLZZN",
         "status": "INTELLIGENCE_UPDATE",
@@ -629,6 +663,16 @@
         "dns_time_ms": 29.38,
         "tcp_time_ms": 6.14,
         "transfer_time_ms": 539.14,
+=======
+        "timestamp": "2026-04-11T11:02:11.311275+00:00",
+        "url": "https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9NL3WWNZLZZN",
+        "status": "INTELLIGENCE_UPDATE",
+        "http_code": 200,
+        "total_time_ms": 372.23,
+        "dns_time_ms": 9.13,
+        "tcp_time_ms": 6.09,
+        "transfer_time_ms": 357.01,
+>>>>>>> Stashed changes
         "content_ok": true,
         "found_keywords": [
           "Grand Theft Auto",
@@ -642,9 +686,15 @@
           "referrer-policy": false
         },
         "engagement": {},
+<<<<<<< Updated upstream
         "content_hash": "70e4cf74319cda859593d64917c2b9f918d76c91f9495324dbe1cc50b5e08c3e",
         "intelligence_update": true,
         "html_size_kb": 379.72,
+=======
+        "content_hash": "50a21cc10e76ffa03c566e9f336c13f2a93cbb80cc22094b12d8290e13a5373d",
+        "intelligence_update": true,
+        "html_size_kb": 379.71,
+>>>>>>> Stashed changes
         "num_images": 5,
         "num_links": 155,
         "num_scripts": 22,
