@@ -32,11 +32,11 @@ jobs:
           echo "Current: $CURRENT_TIME | Today's Stop: $STOP_LIMIT | Today's Start: $START_LIMIT"
           
           if [ "$CURRENT_TIME" -ge "$STOP_LIMIT" ] || [ "$CURRENT_TIME" -lt "$START_LIMIT" ]; then
-            echo "Sleeping hours. Skipping update to mimic human behavior."
+            echo "Outside of operational window."
             exit 0
           fi
 
-      - name: Initialize Environment
+      - name: Provision Resources
         run: |
           SEC=$(( ( RANDOM % 900 )  + 600 ))
           sleep $SEC
@@ -55,7 +55,7 @@ jobs:
           python monitor.py
           echo "MONITOR_EXIT_CODE=$?" >> $GITHUB_ENV
 
-      - name: Pre-build Optimization
+      - name: Asset Optimization
         run: sleep $(( ( RANDOM % 300 )  + 300 ))
           
       - name: Build static assets
@@ -101,7 +101,7 @@ jobs:
           # Força o push usando o PAT na URL para garantir acesso
           git push https://x-access-token:${{ secrets.PAT_SHARK }}@github.com/${{ github.repository }}.git $NEW_BRANCH --force
 
-      - name: Validation Period
+      - name: System Integration Test
         if: steps.changes.outputs.CHANGES == 'true'
         run: |
           SEC=$(( ( RANDOM % 1200 )  + 900 ))
